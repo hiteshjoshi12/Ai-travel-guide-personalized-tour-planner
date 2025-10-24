@@ -7,12 +7,13 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [user, setUser] = useState(null);
   const [previewImage, setPreviewImage] = useState("");
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
   
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/user/profile", {
+        const res = await axios.get(`${API_BASE_URL}/api/user/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data);
@@ -39,7 +40,7 @@ const Profile = () => {
   const handleSave = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put("http://localhost:5000/api/user/update", user, {
+      await axios.put(`${API_BASE_URL}/api/user/update`, user, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setIsEditing(false);

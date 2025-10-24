@@ -13,6 +13,7 @@ const Header = () => {
   
   const profileMenuRef = useRef(null);
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -23,7 +24,7 @@ const Header = () => {
         return;
       }
       try {
-        const res = await axios.get("http://localhost:5000/api/user/profile", {
+        const res = await axios.get(`${API_BASE_URL}/api/user/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data);

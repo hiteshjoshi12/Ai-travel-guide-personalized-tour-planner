@@ -5,10 +5,11 @@ const Suggested = () => {
   const [tripCategories, setTripCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchTrips = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/suggested-trips');
+        const response = await fetch(`${API_BASE_URL}/api/suggested-trips`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

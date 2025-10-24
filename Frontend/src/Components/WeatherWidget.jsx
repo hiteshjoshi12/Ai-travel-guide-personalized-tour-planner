@@ -9,6 +9,7 @@ const WeatherWidget = ({ location }) => {
   const [weather, setWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   const date = new Date().toLocaleDateString();
   useEffect(() => {
@@ -52,7 +53,7 @@ const WeatherWidget = ({ location }) => {
     const fetchWeather = async () => {
   
       try {
-        const response = await axios.get("http://localhost:5000/api/weather", {
+        const response = await axios.get(`${API_BASE_URL}/api/weather`, {
           params: { lat, lon }, 
         });
 

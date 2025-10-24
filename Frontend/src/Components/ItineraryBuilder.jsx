@@ -31,6 +31,7 @@ const ItineraryBuilder = () => {
   const [isHistoryLoading, setIsHistoryLoading] = useState(true);
 
   const token = localStorage.getItem("token");
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   const fetchHistory = async () => {
     if (!token) {
@@ -39,7 +40,7 @@ const ItineraryBuilder = () => {
     }
     setIsHistoryLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/history", {
+      const res = await fetch(`${API_BASE_URL}/api/history`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -92,7 +93,7 @@ const ItineraryBuilder = () => {
     let fullItineraryText = "";
 
     try {
-      const res = await fetch("http://localhost:5000/api/generate", {
+      const res = await fetch(`${API_BASE_URL}/api/generate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +154,7 @@ const ItineraryBuilder = () => {
         const title = `${form.destination}, ${durationStr}`;
 
         try {
-          await fetch("http://localhost:5000/api/history", {
+          await fetch(`${API_BASE_URL}/api/history`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
