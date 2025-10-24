@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/Components/ui/carousel";
 const Suggested = () => {
 
   const [tripCategories, setTripCategories] = useState([]);
